@@ -50,8 +50,8 @@
         <div class="w-lg-auto w-100 logo d-lg-block d-flex align-items-center justify-content-between">
           <img src="https://freshcart-next-js-template.netlify.app/images/logo/freshcart-logo.svg"alt="">
            <!-- toggler -->
-            <button type="button" id="nav-toggler">
-               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="22" height="22" fill="#0aad0a" class="bi bi-text-indent-left text-primary"><path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708M7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"></path></svg>
+            <button type="button" id="nav-toggler" data-bs-toggler-custom="m-nav">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="22" height="22" fill="#0aad0a" class="bi bi-text-indent-left" style="pointer-events: none;"><path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708M7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"></path></svg>
             </button>
            <!-- toggler -->
         </div>
@@ -134,11 +134,11 @@
         </div>
       </div>
     </div>
-    <div class="top_last_navigation d-lg-flex bg-white align-items-center h-lg-auto position-fixed position-lg-static p-lg-0 p-3">
+    <div id="m-nav" class="top_last_navigation d-lg-flex bg-white align-items-center h-lg-auto position-fixed position-lg-static p-lg-0 p-3">
       <!-- for small device -->
        <div class="mobile-menu-header d-lg-none d-flex justify-content-between px-3 py-3">
          <img src="https://freshcart-next-js-template.netlify.app/images/logo/freshcart-logo.svg" alt="">
-         <button type="button" class="btn-close m_close_btn p-2" aria-label="Close"></button>
+         <button type="button" data-toggle-closeer="m-nav" class="btn-close m_close_btn p-2" aria-label="Close"></button>
        </div>
       <!-- for small device -->
       <ul class="navigation-list d-lg-flex align-items-center" style="list-style: none; margin:0;">
