@@ -288,6 +288,44 @@ body {
 
 }
 
+// cart ofcanvas
+.cart-image{
+    img{
+        height: 65px;
+        width: 65px;
+    }
+}
+.cart_remove_btn_container{
+    a{
+        text-decoration: none;
+        color: var(--nav-text-color);
+    }
+    svg{
+        fill: var(--btn-bg) !important;
+    }
+}
+
+.cart-notis{
+    a{
+        text-decoration: none;
+        color:rgb(85, 0, 0);
+    }
+    --bs-alert-padding-y: 8px !important;
+}
+
+.cart-quantity{
+    button{
+        border: 1px solid var(--border-color);
+        padding: 2px 12px;
+        border-radius: 5px;
+        background-color: #fff;
+        outline: navajowhite;
+        &:hover{
+            background-color: #cfcfcf;
+        }
+    }
+}
+
 // end navigation
 @media screen and (max-width:992px) {
     .all-categories {
