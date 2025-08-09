@@ -50,7 +50,7 @@
         <div class="w-lg-auto w-100 logo d-lg-block d-flex align-items-center justify-content-between">
           <img src="https://freshcart-next-js-template.netlify.app/images/logo/freshcart-logo.svg"alt="">
            <!-- toggler -->
-            <button type="button" id="nav-toggler" data-bs-toggler-custom="m-nav">
+            <button type="button" id="nav-toggler" class="d-lg-none" data-bs-toggler-custom="m-nav">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="22" height="22" fill="#0aad0a" class="bi bi-text-indent-left" style="pointer-events: none;"><path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5m.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708M7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"></path></svg>
             </button>
            <!-- toggler -->
@@ -81,10 +81,10 @@
               </div>
 
             </div>
-            <div class="n-links-name">Notification</div>
+            <div class="n-links-name d-none d-lg-block">Notification</div>
           </div>
-          <div class="n-links d-flex flex-column align-items-center">
-            <div class="n-links-icon" data-bs-toggle="modal" data-bs-target="#nav-my-acount">
+          <div class="n-links d-flex flex-column align-items-center" data-bs-toggle="modal" data-bs-target="#nav-my-acount">
+            <div class="n-links-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor"
                 class="bi bi-person-circle fs-4">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
@@ -93,7 +93,7 @@
                 </path>
               </svg>
             </div>
-            <div class="n-links-name">sign up</div>
+            <div class="n-links-name d-none d-lg-block">sign up</div>
           </div>
           <div class="n-links d-flex flex-column align-items-center">
             <div class="n-links-icon">
@@ -111,26 +111,29 @@
                 </svg>
               </div>
             </div>
-            <div class="n-links-name">My Orders</div>
+            <div class="n-links-name d-none d-lg-block">Total Order</div>
           </div>
-          <div class="n-links d-flex flex-column align-items-center">
-            <div class="n-links-icon" data-bs-toggle="modal" data-bs-target="#shoping_cart">
+        
+          <div class="n-links d-flex flex-column align-items-center" data-bs-toggle="offcanvas" href="#offcanvasExample">
+            <div class="n-links-icon">
               <div class="badge-n-links position-relative">
                 <span
                   class="position-absolute badge-text top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  4+
+                  8+
                   <span class="visually-hidden">unread messages</span>
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor"
-                  class="bi bi-cart2 fs-4">
+                  class="bi bi-archive fs-4">
                   <path
-                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0">
+                    d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5">
                   </path>
                 </svg>
               </div>
             </div>
-            <div class="n-links-name">Shoping Cart</div>
+            <div class="n-links-name d-none d-lg-block">Shoping cart</div>
           </div>
+
+          
         </div>
       </div>
     </div>
@@ -288,13 +291,13 @@
   <!-- my acount  -->
   <div class="modal fade" id="nav-my-acount" tabindex="-1"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog mt-lg-3 mt-5">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5 mx-3 pt-3" id="exampleModalLabel">Sign up</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" >
           <div>
             <label for="name" class="form-label px-1 mt-1">Name</label>
             <div class="input-group mb-3">
@@ -355,6 +358,32 @@
 
   <!-- modals navigation -->
   <!-- navigation -->
+
+
+
+  <!-- ofcanvas shoping cart -->
+   <div class="offcanvas shoppingcartOffcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+    </div>
+    <div class="dropdown mt-3">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <!-- ofcanvas shoping cart -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
