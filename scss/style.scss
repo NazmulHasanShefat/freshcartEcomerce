@@ -156,12 +156,13 @@ body {
     padding-left: 0;
 
     .navigation-items {
-        margin-left: 15px;
+        margin-left: 0;
 
         .navigation-link {
             text-decoration: none;
             color: var(--nav-text-color);
             font-weight: 600;
+            font-size: .9rem;
         }
     }
 }
@@ -252,13 +253,10 @@ body {
     width: 38% !important;
 }
 
-@media screen and (max-width:1065px) {
-    .nav-2-right {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-    }
+// main
 
+// midia query
+@media screen and (max-width:1065px) {
     #top-searchBox {
         width: 90%;
         height: 45px;
@@ -271,22 +269,22 @@ body {
         transition: .3s ease-in-out;
     }
     .navigation-list .navigation-items {margin-left: 0;}
-
+    
     .n-links {
         svg {
             height: 18px;
             width: 18px;
         }
-
+        
         .n-links-name {
             font-size: .7rem;
         }
     }
-
+    
     .b-nav {
         padding: 0;
     }
-
+    
 }
 
 // cart ofcanvas
@@ -329,11 +327,25 @@ body {
 
 
 // end navigation
+.b-nav{justify-content: space-between; gap: 50px;}
+
+@media screen and (max-width:1155px) {
+    .n-links .n-links-name {
+        display: none;
+    }
+    .b-nav{justify-content: end; gap: 50px;}
+}
+
 @media screen and (max-width:992px) {
+    .nav-2-right {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
     .all-categories {
         display: none;
     }
-
+    
     .top_last_navigation {
         left: 0;
         top: 0;
@@ -343,55 +355,64 @@ body {
         transform: translateX(-100%);
         transition: all .3s ease-in-out;
     }
-
+    
     .open-mobilesidenav {
         transform: translateX(0);
     }
-
+    
     .navigation-link {
         svg {
             margin-left: 0;
         }
     }
-
+    
     #nav-toggler {
         border: 1px solid var(--border-color);
         outline: none;
         padding: 3px 8px;
         border-radius: 7px;
         transition: .2s ease-in-out;
-
+        
         &:hover {
             background-color: #0ae70a33;
         }
-
+        
         svg {
             height: 25px;
             width: 25px;
         }
     }
-
+    
     .n-links-icon {
         padding: 20px 20px;
-
+        
         &:hover {
             background-color: rgba(7, 255, 7, 0.096);
         }
-
+        
         height: max-content;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
-
+        
         svg {
             height: 20px;
             width: 20px;
         }
     }
-
+    
     .shoppingcartOffcanvas {
         width: 100% !important;
     }
     .nav-2-right{
         border-top: 1px solid #cdcdcd;
     }
+    .b-nav{
+        justify-content: space-between;
+        gap:0;
+        background-color: #fff
+    };
 }
+
+
+
+
