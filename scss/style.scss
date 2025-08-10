@@ -298,6 +298,9 @@ body {
 
 // cart ofcanvas
 .cart-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img {
         height: 65px;
         width: 65px;
@@ -412,7 +415,7 @@ body {
     }
 
     .n-links-icon {
-        padding: 20px 20px;
+        padding: 20px 15px;
 
         &:hover {
             background-color: rgba(7, 255, 7, 0.096);
@@ -433,7 +436,7 @@ body {
     }
 
     .nav-2-right {
-         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 -4px 20px 0 rgba(0, 0, 0, 0.19);
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     .b-nav {
@@ -441,6 +444,54 @@ body {
         gap: 0;
         background-color: #fff
     }
+    .logo{
+    width: 100%;
+}
+.top-searchBox{
+    width: 95%;
+}
+}
 
-    ;
+@media screen and (max-width:768px) {
+    .cart-image {
+        display: block;
+    img {
+        position: relative;
+        left: -20px;
+        top: 5px;
+    }
+}
+}
+
+
+.checkout-options{
+    width: 100%;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: max-content;
+}
+.checkout_btn{
+    border: none;
+    margin: 4px 0;
+    outline: none;
+    width: 50%;
+    padding: 10px 15px;
+    background-color: var(--btn-bg);
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 18px;
+}
+.Vew_cart{
+    border: none;
+    margin: 4px 0;
+    outline: none;
+    width: 50%;
+    padding: 10px 15px;
+    background-color: var(--btn-bg);
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 18px;
+
 }
