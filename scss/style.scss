@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url("./swiper_slider.scss");
+
 * {
     box-sizing: border-box;
 }
@@ -250,12 +251,17 @@ body {
 }
 
 .shoppingcartOffcanvas {
-    width: 38% !important;
+    width: 45% !important;
 }
 
 // main
 
 // midia query
+@media screen and (max-width:1180px) {
+    .shoppingcartOffcanvas {
+    width: 60% !important;
+    }
+}
 @media screen and (max-width:1065px) {
     #top-searchBox {
         width: 90%;
@@ -268,58 +274,72 @@ body {
         border: 2px solid var(--border-color);
         transition: .3s ease-in-out;
     }
-    .navigation-list .navigation-items {margin-left: 0;}
-    
+
+    .navigation-list .navigation-items {
+        margin-left: 0;
+    }
+
     .n-links {
         svg {
             height: 18px;
             width: 18px;
         }
-        
+
         .n-links-name {
             font-size: .7rem;
         }
     }
-    
+
     .b-nav {
         padding: 0;
     }
-    
+
 }
 
 // cart ofcanvas
-.cart-image{
-    img{
+.cart-image {
+    img {
         height: 65px;
         width: 65px;
     }
 }
-.cart_remove_btn_container{
-    a{
+
+.cart_remove_btn_container {
+    a {
         text-decoration: none;
         color: var(--nav-text-color);
     }
-    svg{
+
+    svg {
         fill: var(--btn-bg) !important;
     }
 }
 
-.cart-notis{
-    a{
+.cart-notis {
+    a {
         text-decoration: none;
-        color:rgb(85, 0, 0);
+        color: rgb(85, 0, 0);
     }
+
     --bs-alert-padding-y: 8px !important;
 }
+.cart-item {
+        border: 1px solid var(--border-color);
+    }
 
-.cart-quantity{
-    button{
+.cart-quantity {
+    div {
+        border: 1px solid var(--border-color);
+        padding: 1px 11px;
+    }
+    button {
         border: 1px solid var(--border-color);
         padding: 2px 12px;
         border-radius: 5px;
         background-color: #fff;
         outline: navajowhite;
-        &:hover{
+
+        &:hover {
             background-color: #cfcfcf;
         }
     }
@@ -327,13 +347,20 @@ body {
 
 
 // end navigation
-.b-nav{justify-content: space-between; gap: 50px;}
+.b-nav {
+    justify-content: space-between;
+    gap: 50px;
+}
 
 @media screen and (max-width:1155px) {
     .n-links .n-links-name {
         display: none;
     }
-    .b-nav{justify-content: end; gap: 50px;}
+
+    .b-nav {
+        justify-content: end;
+        gap: 50px;
+    }
 }
 
 @media screen and (max-width:992px) {
@@ -342,10 +369,11 @@ body {
         bottom: 0;
         left: 0;
     }
+
     .all-categories {
         display: none;
     }
-    
+
     .top_last_navigation {
         left: 0;
         top: 0;
@@ -355,64 +383,64 @@ body {
         transform: translateX(-100%);
         transition: all .3s ease-in-out;
     }
-    
+
     .open-mobilesidenav {
         transform: translateX(0);
     }
-    
+
     .navigation-link {
         svg {
             margin-left: 0;
         }
     }
-    
+
     #nav-toggler {
         border: 1px solid var(--border-color);
         outline: none;
         padding: 3px 8px;
         border-radius: 7px;
         transition: .2s ease-in-out;
-        
+
         &:hover {
             background-color: #0ae70a33;
         }
-        
+
         svg {
             height: 25px;
             width: 25px;
         }
     }
-    
+
     .n-links-icon {
         padding: 20px 20px;
-        
+
         &:hover {
             background-color: rgba(7, 255, 7, 0.096);
         }
-        
+
         height: max-content;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
-        
+
         svg {
             height: 20px;
             width: 20px;
         }
     }
-    
+
     .shoppingcartOffcanvas {
         width: 100% !important;
     }
-    .nav-2-right{
-        border-top: 1px solid #cdcdcd;
+
+    .nav-2-right {
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 -4px 20px 0 rgba(0, 0, 0, 0.19);
     }
-    .b-nav{
+
+    .b-nav {
         justify-content: space-between;
-        gap:0;
+        gap: 0;
         background-color: #fff
-    };
+    }
+
+    ;
 }
-
-
-
-
