@@ -130,17 +130,21 @@
                   8+
                   <span class="visually-hidden">unread messages</span>
                 </span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="1em" height="1em" fill="currentColor"
-                  class="bi bi-archive fs-4">
-                  <path
-                    d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5">
-                  </path>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="22" height="22" fill="currentColor" class="bi bi-cart2"><path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"></path></svg>
               </div>
             </div>
             <div class="n-links-name d-none d-lg-block">Shoping cart</div>
           </div>
-
+         
+          <div class="n-links d-flex d-lg-none flex-column align-items-center" data-bs-toggle="offcanvas"
+            href="#offcanvasExample">
+            <div class="n-links-icon">
+              <div class="badge-n-links position-relative">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="24" height="24" fill="currentColor" class="bi bi-funnel"><path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2z"></path></svg>
+              </div>
+            </div>
+            <div class="n-links-name d-none">categorie-mini</div>
+          </div>
 
         </div>
       </div>
@@ -412,7 +416,7 @@
 
 
   <!-- ofcanvas shoping cart -->
-  <div class="offcanvas shoppingcartOffcanvas offcanvas-end" tabindex="-1" id="offcanvasExample"
+  <div class="offcanvas shoppingcartOffcanvas offcanvas-end show" tabindex="-1" id="offcanvasExample"
     aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
       <div class="offcanvas-title" id="offcanvasExampleLabel">
@@ -428,10 +432,10 @@
         </div>
       </div>
       <div class="cart-item row align-items-center px-2 px-lg-0">
-        <div class="cart-sections cart-image col-2">
+        <div class="cart-sections cart-image col-2 ml-0">
           <img src="https://freshcart-next-js-template.netlify.app/images/products/product-img-1.jpg" alt="">
         </div>
-        <div class="cart-sections col-lg-5 col-4">
+        <div class="cart-sections col-lg-5 col-10">
           <div class="cart-name" style="font-size: 14px;"><strong>Haldiram's Sev Bhujia</strong></div>
           <div class="cart_remove_btn_container">
             <a href="#" style="font-size: 12px;">
@@ -460,14 +464,16 @@
           </div>
         </div>
 
-        <div class="cart-sections col-4 col-lg-3 px-0">
-          <div class="cart-quantity d-flex align-items-center justify-content-start gap-2 gap-lg-3">
+
+        <div class="cart-sections col-6 col-lg-3 px-4 py-2">
+          <div class="cart-quantity d-flex align-items-center justify-content-start gap-3 gap-lg-2 gap-lg-3">
             <button type="button">+</button>
             <div>7</div>
             <button type="button">-</button>
           </div>
         </div>
-        <div class="cart-sections col-2">
+
+        <div class="cart-sections col-6 col-lg-2 d-lg-block py-2 d-flex px-3 justify-content-end">
           <div class="total-amount"><strong>$21.60</strong></div>
         </div>
 
