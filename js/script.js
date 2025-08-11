@@ -3,6 +3,7 @@ document.body.addEventListener("click", (event) => {
     const targetId2 = event.target.getAttribute("data-target-sub-item");
     let allSubmenus = document.querySelectorAll(".sec_2_sub_cat_list");
 
+    // mobile _menu 
     if (targetId) {
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
@@ -10,27 +11,30 @@ document.body.addEventListener("click", (event) => {
         }
     }
 
-
+    
+    
+    
     // product categorie
-     if (targetId2) {
-         const targetElement2 = document.getElementById(targetId2);
-         if(targetElement2){
+    if (targetId2) {
+        const targetElement2 = document.getElementById(targetId2);
+        if(targetElement2){
             allSubmenus.forEach(mymunus =>{
                 if(mymunus.id !== targetElement2.id && mymunus.classList.contains("activeHeight")){
                     mymunus.classList.toggle("activeHeight")
                     mymunus.style.maxHeight = "0";
                 }
             })
-             if(!targetElement2.classList.contains("activeHeight")){
+            if(!targetElement2.classList.contains("activeHeight")){
                 targetElement2.style.maxHeight = targetElement2.scrollHeight + "px";
-             }else{
+            }else{
                 targetElement2.style.maxHeight = "0";
-             }
-             targetElement2.classList.toggle("activeHeight")
+            }
+            targetElement2.classList.toggle("activeHeight")
         }
     }
     // end
 })
+
 
 
 document.body.addEventListener("click", (e) => {

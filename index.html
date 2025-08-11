@@ -54,7 +54,7 @@
         class="nav-2-left col-12 col-md-12 col-lg-7 d-flex flex-column flex-lg-row justify-content-start align-items-center gap-3">
         <div class="logo px-1 px-lg-0 d-lg-block d-flex align-items-center justify-content-between">
           <a href="https://freshcart-next-js-template.netlify.app/homepage-5">
-          <img src="https://freshcart-next-js-template.netlify.app/images/logo/freshcart-logo.svg" alt="">
+            <img src="https://freshcart-next-js-template.netlify.app/images/logo/freshcart-logo.svg" alt="">
           </a>
           <!-- toggler -->
           <button type="button" id="nav-toggler" class="d-lg-none" data-bs-toggler-custom="m-nav">
@@ -699,7 +699,7 @@
                 </li>
               </ul>
             </li>
-           
+
             <li class="p_s_c_items">
               <div class="p_s_c_links" data-target-sub-item="p_s_c_data_link_2">
                 <div class="p_s_c_links_icons" style="pointer-events: none;">
@@ -781,17 +781,18 @@
 
 
       <!-- main product container =============================================================================== -->
-      <div class="Products_container col-9">
-        <div class="off_container">
-          <div class="off_c_heading">
-            <h1>Deal of the day</h1>
-            <p>Brings to users an array of discounts on a variety</p>
-          </div>
-          <div class="off_c_product">
+      <div class="Products_container  col-9" style="height: 500px;">
+        <div class="off_c_heading">
+          <h1>Deal of the day</h1>
+          <p>Brings to users an array of discounts on a variety</p>
+        </div>
+        <div class="off_container px-5 py-3" style="border-radius: 20px; border: 1px solid red">
+          <div class="off_c_product d-flex align-items-center" style="width: 100%;">
             <div class="off_c_product_image_section"><img
                 src="https://freshcart-next-js-template.netlify.app/images/products/product-img-2.jpg" alt=""></div>
+
             <div class="off_product_details_section">
-              <div class="off_starts_rating">
+              <div class="off_starts_rating d-flex gap-2 py-2">
                 <div class="off_s_image">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12" height="12" fill="currentColor"
                     class="bi bi-star-fill text-warning">
@@ -826,14 +827,15 @@
                 </div>
                 <div class="off_s_rating">4.3</div>
               </div>
-              <div class="off_product_name">NutriChoice Digestive</div>
-              <div class="off_product_price"><span>$24</span><span class="line-through text-body-tertiary">$28</span>
+              <h3 class="off_product_name">NutriChoice Digestive</h3>
+              <div class="off_product_price fs-4" style="margin: 8px 0;"><span>$24</span><span
+                  class="line-through text-body-tertiary">$28</span>
               </div>
-              <button class="add_to_cart_btn">+ Add to cart</button>
+              <button class="add_to_cart_btn mb-2">+ Add to cart</button>
               <div class="Sold_rang">
                 <div class="s_range_titles d-flex justify-content-between">
-                  <p>Already Sold:<span class="alrady_sold_number">45</span></p>
-                  <p>Abailable:<span class="abilable_number">10</span></p>
+                  <p class="mb-0">Already Sold:<span class="alrady_sold_number">45</span></p>
+                  <p class="mb-0">Abailable:<span class="abilable_number">10</span></p>
                 </div>
                 <div class="s_range_progress_bar">
                   <div class="sold_out_range">
@@ -841,9 +843,34 @@
                   </div>
                 </div>
               </div>
-              <div class="count-down-section">
+              <div class="count-down-section mt-3">
                 <h5>Hurry up offer ends soon</h5>
-
+                <div class="timer">
+                  <div class="days-box timer-box">
+                    <div class="t_box_wraper">
+                      <div class="dayNumber">2344</div>
+                      <div class="dayText">Day's</div>
+                    </div>
+                  </div>
+                  <div class="hours-box timer-box">
+                    <div class="t_box_wraper">
+                      <div class="H_Number">0</div>
+                      <div class="dayText">Hour's</div>
+                    </div>
+                  </div>
+                  <div class="mins-box timer-box">
+                    <div class="t_box_wraper">
+                      <div class="M_Number">33</div>
+                      <div class="dayText">Min's</div>
+                    </div>
+                  </div>
+                  <div class="sec-box timer-box">
+                    <div class="t_box_wraper">
+                      <div class="S_Number">23</div>
+                      <div class="dayText">Sec's</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
