@@ -1,6 +1,7 @@
 document.body.addEventListener("click", (event) => {
     const targetId = event.target.getAttribute("data-bs-toggler-custom");
     const targetId2 = event.target.getAttribute("data-target-sub-item");
+    let allSubmenus = document.querySelectorAll(".sec_2_sub_cat_list");
 
     if (targetId) {
         const targetElement = document.getElementById(targetId);
@@ -14,7 +15,8 @@ document.body.addEventListener("click", (event) => {
         if (targetElement2) {
             targetElement2.classList.toggle("activeHeight");
             if(targetElement2.classList.contains("activeHeight")){
-                 targetElement2.style.maxHeight = targetElement2.scrollHeight + "px";
+                targetElement2.style.maxHeight = targetElement2.scrollHeight + "px";
+                // targetElement2.classList.toggle("activeHeight");
             }
             else{
                 targetElement2.style.maxHeight = "0";
