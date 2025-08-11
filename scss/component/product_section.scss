@@ -17,6 +17,7 @@
     .p_s_c_items {
         border-bottom: 1px solid var(--border-color);
         .sec_2_sub_cat_list {
+            padding:0;
             // border: 1px solid var(--border-color);
             padding-bottom: 8px;
             max-height: 0;
@@ -61,7 +62,7 @@
         }
         ul{
             li{
-                padding: 7px 0;
+                padding: 7px 50px;
                 a{
                     text-decoration: none;
                     color:var(--nav-text-color);

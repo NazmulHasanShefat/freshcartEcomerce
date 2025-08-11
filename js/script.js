@@ -15,7 +15,8 @@ document.body.addEventListener("click", (event) => {
             targetElement2.classList.toggle("activeHeight");
             if(targetElement2.classList.contains("activeHeight")){
                  targetElement2.style.maxHeight = targetElement2.scrollHeight + "px";
-            }else{
+            }
+            else{
                 targetElement2.style.maxHeight = "0";
             }
         }
