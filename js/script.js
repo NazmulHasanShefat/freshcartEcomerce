@@ -11,16 +11,20 @@ document.body.addEventListener("click", (event) => {
     }
 
      if (targetId2) {
-        const targetElement2 = document.getElementById(targetId2);
-        if (targetElement2) {
-            targetElement2.classList.toggle("activeHeight");
-            if(targetElement2.classList.contains("activeHeight")){
+         const targetElement2 = document.getElementById(targetId2);
+         if(targetElement2){
+            allSubmenus.forEach(mymunus =>{
+                if(mymunus.id !== targetElement2.id && mymunus.classList.contains("activeHeight")){
+                    mymunus.classList.toggle("activeHeight")
+                    mymunus.style.maxHeight = "0";
+                }
+            })
+             if(!targetElement2.classList.contains("activeHeight")){
                 targetElement2.style.maxHeight = targetElement2.scrollHeight + "px";
-                // targetElement2.classList.toggle("activeHeight");
-            }
-            else{
+             }else{
                 targetElement2.style.maxHeight = "0";
-            }
+             }
+             targetElement2.classList.toggle("activeHeight")
         }
     }
 })
