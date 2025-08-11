@@ -10,6 +10,8 @@ document.body.addEventListener("click", (event) => {
         }
     }
 
+
+    // product categorie
      if (targetId2) {
          const targetElement2 = document.getElementById(targetId2);
          if(targetElement2){
@@ -27,6 +29,7 @@ document.body.addEventListener("click", (event) => {
              targetElement2.classList.toggle("activeHeight")
         }
     }
+    // end
 })
 
 
