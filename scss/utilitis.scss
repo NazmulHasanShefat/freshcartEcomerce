@@ -1,0 +1,22 @@
+:root {
+    --nav-text-color: #6d808b;
+    --nav-hover-bg: #d6d6d6c7;
+    --border-color: #5c6c753f;
+    --btn-bg: #118111;
+    --btn-hover-bg: #0aad0a;
+    --btn-hover-active-bg: #005f00;
+    --white-text: #f7fbf7;
+    --alert-bg: #db3030;
+}
+.add_to_cart_btn{
+    background-color: var(--btn-bg);
+    padding: 7px 15px;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    transition: all .2s ease-in-out;
+    &:hover{
+        background-color: var(--btn-hover-bg);
+    }
+}
