@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="./css/cartpage.min.css">
   <link rel="stylesheet" href="./css/checkout.min.css">
   <link rel="stylesheet" href="./css/swiper_slider.min.css">
+  <link rel="stylesheet" href="./css/product_section.min.css">
+  <link rel="stylesheet" href="css/utilitis.min.css">
   <link rel="stylesheet" href="./css/main.min.css">
   <link rel="stylesheet" href="./css/mainRes.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -827,9 +829,9 @@
                 </div>
                 <div class="off_s_rating">4.3</div>
               </div>
-              <h3 class="off_product_name">NutriChoice Digestive</h3>
-              <div class="off_product_price fs-4" style="margin: 8px 0;"><span>$24</span><span
-                  class="line-through text-body-tertiary">$28</span>
+              <h4 class="off_product_name">NutriChoice Digestive</h4>
+              <div class="off_product_price fs-5" style="margin: 8px 0; font-weight: 500;"><span>$24 </span><span
+                  class="line-through text-body-tertiary" style="text-decoration: line-through; font-weight: 500;">$28</span>
               </div>
               <button class="add_to_cart_btn mb-2">+ Add to cart</button>
               <div class="Sold_rang">
@@ -845,6 +847,9 @@
               </div>
               <div class="count-down-section mt-3">
                 <h5>Hurry up offer ends soon</h5>
+                <label for="dateTime">current date</label><br>
+                <input type="date" id="offerTime"><br>
+                <button id="set_btn">set time</button>
                 <div class="timer">
                   <div class="days-box timer-box">
                     <div class="t_box_wraper">
@@ -889,6 +894,7 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="./js/library/swiper_slider.js"></script>
+  <script src="js/count_down.js"></script>
   <script src="./js/script.js"></script>
 </body>
 

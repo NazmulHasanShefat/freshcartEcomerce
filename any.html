@@ -1,36 +1,140 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<style>
-div.polaroid {
-  width: 250px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-}
-
-div.container {
-  padding: 10px;
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Countdown — 2233 days</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#7dd3fc;--muted:#9aa4b2}
+    *{box-sizing:border-box}
+    body{margin:0;min-height:100vh;display:grid;place-items:center;background:linear-gradient(180deg,#071026 0%, #07121a 60%);font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(6px);padding:28px;border-radius:14px;box-shadow:0 8px 30px rgba(2,6,23,0.6);width:min(720px,92vw)}
+    h1{margin:0 0 8px;color:var(--accent);font-size:20px;letter-spacing:0.6px}
+    p.lead{margin:0 0 20px;color:var(--muted)}
+    .grid{display:flex;gap:12px;justify-content:space-between}
+    .unit{flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.03)}
+    .big{font-size:44px;color:#e6f6ff;margin:0;font-weight:700}
+    .label{margin-top:6px;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:1px}
+    .controls{display:flex;gap:8px;align-items:center;margin-top:18px}
+    button{background:transparent;border:1px solid rgba(125,211,252,0.12);color:var(--accent);padding:8px 12px;border-radius:8px;cursor:pointer}
+    input[type="date"], input[type="time"]{background:transparent;border:1px solid rgba(255,255,255,0.04);color:#cfeeff;padding:8px;border-radius:8px}
+    .hint{color:var(--muted);font-size:13px;margin-left:auto}
+    @media (max-width:520px){.grid{flex-direction:column}.big{font-size:36px}}
+  </style>
 </head>
 <body>
+  <div class="card">
+    <h1>Countdown</h1>
+    <p class="lead">Live countdown initialized to <strong>2233 days</strong> and <strong>32 seconds</strong> from now. You can pick your own target date/time below.</p>
 
-<h1>Create Polaroid Images</h1>
+    <div class="grid" id="countdown">
+      <div class="unit">
+        <div class="big" id="days">0</div>
+        <div class="label">Days</div>
+      </div>
+      <div class="unit">
+        <div class="big" id="hours">0</div>
+        <div class="label">Hours</div>
+      </div>
+      <div class="unit">
+        <div class="big" id="minutes">0</div>
+        <div class="label">Minutes</div>
+      </div>
+      <div class="unit">
+        <div class="big" id="seconds">0</div>
+        <div class="label">Seconds</div>
+      </div>
+    </div>
 
-<p>The box-shadow property can be used to create polaroid images:</p>
-
-<div class="polaroid">
-  <img src="rock600x400.jpg" alt="Norway" style="width:100%">
-  <div class="container">
-    <p>Hardanger, Norway</p>
+    <div class="controls">
+      <input type="date" id="datePicker" />
+      <input type="time" id="timePicker" step="1" />
+      <button id="setBtn">Set target</button>
+      <button id="resetBtn">Reset to 2233d +32s</button>
+      <div class="hint">Local time</div>
+    </div>
   </div>
-</div>
- <span class="p_s_c_item_icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="56" width="56" fill="#3d4f58">
-                    <path
-                      d="M16.554 2.349c-.376.182-.407.432-.407 3.257v2.703l-3.272 4.671c-1.799 2.569-3.353 4.805-3.453 4.969-.178.292-.181.621-.182 18.059v17.76l.244.245.244.244 18.026-.065 18.026-.065.233-.232.234-.232.051-2.915c.028-1.603.028-9.593 0-17.755l-.051-14.84-3.384-5.093-3.383-5.094v-5.18l-.273-.273-.273-.273-11.09.006c-7.435.005-11.156.038-11.29.103m21.339 3.344v1.96H17.64v-3.92h20.253v1.96m-.669 3.53c-.017.042-1.331 1.953-2.92 4.247l-2.888 4.17h-9.973c-8.305 0-9.96-.021-9.898-.125.041-.069 1.375-1.98 2.963-4.247l2.888-4.121h9.93c5.461 0 9.916.034 9.898.076m4.547 4.919 2.936 4.435v24.73H32.573V18.614l3.104-4.449c1.707-2.447 3.116-4.451 3.131-4.454.015-.002 1.349 1.991 2.963 4.431m-24.938-3.129c-.257.103-.5.451-.5.716 0 .114.102.325.226.469l.225.262h7.595c7.02 0 7.614-.012 7.84-.16.493-.323.394-1.076-.17-1.291-.296-.113-14.936-.109-15.216.004m14.247 24.92v16.8H10.733v-33.6H31.08v16.8m-10.976-8.119c-3.088.33-5.696 2.571-6.593 5.666-.178.614-.21.937-.203 2.08.006 1.216.034 1.434.267 2.147.466 1.421 1.092 2.438 2.071 3.365 1.529 1.446 3.266 2.141 5.354 2.141s3.825-.695 5.354-2.141c.979-.927 1.605-1.944 2.071-3.365.234-.715.26-.929.266-2.147.007-1.548-.102-2.073-.701-3.355-1.402-3.001-4.539-4.748-7.886-4.391m2.52 1.677c2.812.719 4.817 3.514 4.595 6.404-.255 3.321-2.928 5.825-6.219 5.825a6.227 6.227 0 0 1-5.971-4.433c-1.01-3.303.992-6.923 4.31-7.792.937-.245 2.335-.247 3.285-.004m22.083 16.522v1.214H32.573V44.8h12.134v1.213m0 4.667v1.96H32.573v-3.92h12.134v1.96"
-                      fill-rule="evenodd" />
-                  </svg>
-                </span>
+
+  <script>
+    // Create default target: now + 2233 days + 32 seconds
+    function makeDefaultTarget(){
+      const t = new Date();
+      t.setDate(t.getDate() + 2233);
+      t.setSeconds(t.getSeconds() + 32);
+      return t;
+    }
+
+    let target = makeDefaultTarget();
+
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    const datePicker = document.getElementById('datePicker');
+    const timePicker = document.getElementById('timePicker');
+    const setBtn = document.getElementById('setBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function updatePickersFromTarget(){
+      // set date and time inputs to target (in user's local timezone)
+      const yyyy = target.getFullYear();
+      const mm = String(target.getMonth()+1).padStart(2,'0');
+      const dd = String(target.getDate()).padStart(2,'0');
+      datePicker.value = `${yyyy}-${mm}-${dd}`;
+      const hh = String(target.getHours()).padStart(2,'0');
+      const min = String(target.getMinutes()).padStart(2,'0');
+      const ss = String(target.getSeconds()).padStart(2,'0');
+      timePicker.value = `${hh}:${min}:${ss}`;
+    }
+
+    function updateCountdown(){
+      const now = new Date();
+      let diff = Math.max(0, target - now);
+      if(diff <= 0){
+        // expired
+        daysEl.textContent = '0';
+        hoursEl.textContent = '00';
+        minutesEl.textContent = '00';
+        secondsEl.textContent = '00';
+        return;
+      }
+      const sec = Math.floor(diff / 1000);
+      const days = Math.floor(sec / (24*3600));
+      const hours = Math.floor((sec % (24*3600)) / 3600);
+      const minutes = Math.floor((sec % 3600) / 60);
+      const seconds = sec % 60;
+      daysEl.textContent = String(days);
+      hoursEl.textContent = String(hours).padStart(2,'0');
+      minutesEl.textContent = String(minutes).padStart(2,'0');
+      secondsEl.textContent = String(seconds).padStart(2,'0');
+    }
+
+    // tick every 1 second
+    updatePickersFromTarget();
+    updateCountdown();
+    const ticker = setInterval(updateCountdown, 1000);
+
+    setBtn.addEventListener('click', () => {
+      const d = datePicker.value; // YYYY-MM-DD
+      const t = timePicker.value; // HH:MM:SS or HH:MM
+      if(!d){ alert('Please choose a date first'); return; }
+      // combine into a local datetime string
+      const dt = t ? `${d}T${t}` : `${d}T00:00:00`;
+      const chosen = new Date(dt);
+      if(isNaN(chosen)) { alert('Invalid date/time'); return; }
+      target = chosen;
+      updatePickersFromTarget();
+      updateCountdown();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      target = makeDefaultTarget();
+      updatePickersFromTarget();
+      updateCountdown();
+    });
+
+    // Initialize pickers so user can tweak target
+    updatePickersFromTarget();
+  </script>
 </body>
 </html>
