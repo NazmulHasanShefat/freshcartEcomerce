@@ -124,3 +124,28 @@
         }
     }
 }
+.product{
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    transition: all .3s ease-in-out;
+    margin-top: 20px;
+    img{
+        cursor: pointer;
+    }
+    &:hover{
+        border: 1px solid var(--btn-hover-active-bg);
+    }
+    .product-title{
+        color: var(--text-dark-blue2);
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .price_sell{
+        color: var(--text-dark-blue2);
+        font-weight: 600;
+    }
+    .price_old{
+        color:var(--nav-text-color);
+        text-decoration: line-through;
+    }
+}
