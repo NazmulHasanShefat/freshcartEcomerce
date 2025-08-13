@@ -1,1 +1,1 @@
-.cart_alert_div{position:fixed;bottom:20px;background-color:aqua;right:0;width:400px;height:100px;display:flex;justify-content:center;align-items:end;z-index:99999}
+.cart_alert_div{position:fixed;bottom:80px;right:20px;background-color:#fff;width:max-content;height:max-content;padding:4px 12px;font-weight:600;display:flex;justify-content:center;align-items:center;z-index:99999999;border-radius:8px;box-shadow:0 0px 62px 0 rgba(0,0,0,.2),0 -7px 20px 0 rgba(0,0,0,.19);transition:all .3s ease-in-out}.cart_alert_div p{margin:0}

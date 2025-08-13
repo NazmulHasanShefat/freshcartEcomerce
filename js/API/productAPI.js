@@ -73,10 +73,23 @@ async function fetch_products() {
       alert_div.classList.add("cart_alert_div")  // adding class
       let alert_box = document.querySelectorAll(".cart_alert_div");
       console.log(alert_box.length);
-      alert_div.style.transform = `translateY(-${alert_box.length*110}%)`
+      alert_div.style.transform = `translateY(-${alert_box.length*120}%)`;
+      alert_div.style.opacity = "0";
+      // alert_div.style.transform = `scale(0)`;
       alert_div.style.marginTop = "20px";
-      alert_div.innerHTML = `<h1>hello</h1>`
+      alert_div.innerHTML = `<p> 
+       <span><img src="https://cdn-icons-png.flaticon.com/512/14090/14090371.png" height="20" width="20"></span>
+      Added to cart</p>`
       document.body.appendChild(alert_div);
+      setTimeout(() => {
+        alert_div.style.opacity = "1";
+      }, 100);
+
+      setTimeout(() => {
+        document.body.removeChild(alert_div);
+      }, 2000);
+
+
     })
   })
   // add to cart alert
