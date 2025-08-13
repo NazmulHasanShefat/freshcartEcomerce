@@ -129,6 +129,13 @@
     border-radius: 15px;
     transition: all .3s ease-in-out;
     margin-top: 20px;
+    .product-title{
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
     img{
         cursor: pointer;
     }

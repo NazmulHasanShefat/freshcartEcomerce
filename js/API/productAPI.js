@@ -1,18 +1,18 @@
-async function fetch_products(){
-    let response = await fetch("https://dummyjson.com/products");
-    let data = await response.json();
-    console.log(data.products);
-    let allproduct_container = document.querySelector(".allproduct-container");
-    let products = data.products;
+async function fetch_products() {
+  let response = await fetch("https://dummyjson.com/products");
+  let data = await response.json();
+  console.log(data.products);
+  let allproduct_container = document.querySelector(".allproduct-container");
+  let products = data.products;
 
-     allproduct_container.innerHTML =  products.map((elem,index)=>{
-       return `
-         <div class="product_wraper col-lg-4 col-md-6 col-12">
+  allproduct_container.innerHTML = products.map((elem, index) => {
+    return `
+         <div class="product_wraper col-lg-4 col-md-6 col-12 d-flex justify-content-center">
             <div class="product p-3" style="width: 90%;">
                <div class="product-image d-flex justify-content-center align-items-center">
                 <img src="${elem.images}" height="100" width="70" alt="">
               </div>
-               <div class="product-title">${elem.title}</div>
+               <div class="product-title" style="font-size:.9rem;">${elem.title}</div>
                <div class="product_price">
                 <span class="price_sell"><span>$</span><span>${elem.price}</span></span> 
                 <span class="price_old"><span>$</span><span>40</span></span>
@@ -58,6 +58,33 @@ async function fetch_products(){
             </div>
          </div>
        `
-    }).join("");
+  }).join("");
+
+
+
+
+
+  // add to cart alert
+  let add_to_cart_btn = document.querySelectorAll(".add_to_cart_btn");
+
+  add_to_cart_btn.forEach(cart_btn => {
+    cart_btn.addEventListener("click", () => {
+      let alert_div = document.createElement("section");// create alert container
+      alert_div.classList.add("cart_alert_div")  // adding class
+      let alert_box = document.querySelectorAll(".cart_alert_div");
+      console.log(alert_box.length);
+      alert_div.style.transform = `translateY(-${alert_box.length*110}%)`
+      alert_div.style.marginTop = "20px";
+      alert_div.innerHTML = `<h1>hello</h1>`
+      document.body.appendChild(alert_div);
+    })
+  })
+  // add to cart alert
+
+
+
+
+
+
 }
 fetch_products();

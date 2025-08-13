@@ -1,0 +1,13 @@
+.cart_alert_div{
+    position: fixed;
+    bottom: 20px;
+    background-color: aqua;
+    right: 0;
+    // background-color: transparent;
+    width: 400px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    z-index: 99999;
+}
