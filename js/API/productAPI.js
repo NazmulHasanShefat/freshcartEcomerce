@@ -72,22 +72,28 @@ async function fetch_products() {
       let alert_div = document.createElement("section");// create alert container
       alert_div.classList.add("cart_alert_div")  // adding class
       let alert_box = document.querySelectorAll(".cart_alert_div");
-      console.log(alert_box.length);
-      alert_div.style.transform = `translateY(-${alert_box.length*120}%)`;
+      // console.log(alert_box.length);
       alert_div.style.opacity = "0";
+      alert_div.style.transform = `translateY(-${alert_box.length*50}%)`;
       // alert_div.style.transform = `scale(0)`;
       alert_div.style.marginTop = "20px";
       alert_div.innerHTML = `<p> 
-       <span><img src="https://cdn-icons-png.flaticon.com/512/14090/14090371.png" height="20" width="20"></span>
+      <span><img src="https://cdn-icons-png.flaticon.com/512/14090/14090371.png" height="20" width="20"></span>
       Added to cart</p>`
-      document.body.appendChild(alert_div);
+      document.body.prepend(alert_div);
       setTimeout(() => {
         alert_div.style.opacity = "1";
+        alert_div.style.transform = `translateY(-${alert_box.length*150}%)`;
       }, 100);
+      setTimeout(() => {
+        alert_div.style.transform = `translateY(-${alert_box.length*100}%)`;
+        alert_div.style.opacity = "0";
+      }, 4799);
 
       setTimeout(() => {
-        document.body.removeChild(alert_div);
-      }, 2000);
+        // alert_div.style.transform = `translateY(-${alert_box.length*100}%)`;
+        alert_div.remove();
+      }, 5000);
 
 
     })
@@ -100,4 +106,8 @@ async function fetch_products() {
 
 
 }
+
+
+
+
 fetch_products();
