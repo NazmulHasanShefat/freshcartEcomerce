@@ -129,6 +129,10 @@
     border-radius: 15px;
     transition: all .3s ease-in-out;
     margin-top: 20px;
+    // .product_all_details{
+    //     position: relative;
+    //     top: -5px;
+    // }
     .product-title{
         display: -webkit-box;
         -webkit-line-clamp: 1;
@@ -138,6 +142,7 @@
     }
     img{
         cursor: pointer;
+        mix-blend-mode: multiply;
     }
     &:hover{
         border: 1px solid var(--btn-hover-active-bg);
