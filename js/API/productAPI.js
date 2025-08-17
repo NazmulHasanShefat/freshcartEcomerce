@@ -2,25 +2,25 @@
 async function send_request() {
   const res = await fetch("https://dummyjson.com/products");
   try {
-    if(!res.ok){
+    if (!res.ok) {
       throw new Error(`HTTP ERROR STATUS: ${res.status}`);
     }
     const data = res.json();
     return data;
   } catch (error) {
-    console.error(`Faild to fetch data` , error);
+    console.error(`Faild to fetch data`, error);
     return error;
   }
 }
 
 let product_container = document.querySelector(".allproduct-container");
-function get_product(){
+function get_product() {
   send_request()
-  .then(product_data =>{
-    const products = product_data.products;
-    console.log(products);
-    product_container.innerHTML = products.map((product , index) =>{
-      return `
+    .then(product_data => {
+      const products = product_data.products;
+      console.log(products);
+      product_container.innerHTML = products.map((product, index) => {
+        return `
          <div class="product_wraper col-12 col-lg-3">
                 <div class="product px-3 py-2" style="width: 97%;">
                   <div class="product-image d-flex justify-content-center align-items-center">
@@ -76,24 +76,78 @@ function get_product(){
               </div>
               </div>
       `
-    }).join("")
-    let product_component = document.querySelectorAll(".product_wraper");
-    // console.log(product_component);
-    handle_products(product_component);
-  })
+      }).join("")
+      let product_component = document.querySelectorAll(".product_wraper");
+      // console.log(product_component);
+      handle_products(product_component);
+    })
 }
 get_product();
 // handle add to cart btn click event
-function handle_products(Product_elem){
-  Product_elem.forEach(productElem =>{
+function handle_products(Product_elem) {
+  Product_elem.forEach(productElem => {
     let add_to_cart_btn = productElem.firstElementChild.lastElementChild.lastElementChild.firstElementChild;
-    add_to_cart_btn.addEventListener("click",()=>{
+    add_to_cart_btn.addEventListener("click", () => {
       let p_id = add_to_cart_btn.parentElement.parentElement.firstElementChild.innerText;
-      product_add_to_cart(p_id);
+      product_add_to_cart(p_id, add_to_cart_btn);
     })
   })
 }
-
-function product_add_to_cart(pro_id){
-  
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+function product_add_to_cart(pro_id, this_btn) {
+  let cart_product_title = this_btn.parentElement.parentElement.children[1].innerText;
+  let cart_product_image = this_btn.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.src;
+  let cart_product_price = this_btn.parentElement.parentElement.children[2].firstElementChild.lastElementChild.innerText;
+  // console.log(cart_product_image);
+  // same product is exist
+  const productExist = cart.find(item => item.p_title === cart_product_title);
+  if (productExist) {
+    productExist.p_Quantity++;
+    alertAdded_to_cart("Product updated to cart!");
+  } else {
+    cart.push({
+      p_title: cart_product_title,
+      p_image: cart_product_image,
+      p_price: cart_product_price,
+      p_Quantity: 1,
+      p_id: cart.length,
+    })
+    alertAdded_to_cart("Added to cart");
+  }
 }
+
+function updateLocal() {
+  localStorage.setItem("cart", JSON.stringify(cart))
+}
+
+
+
+
+// ================================= add to cart alert ==============================================================
+function alertAdded_to_cart(massage) {
+  let alert_div = document.createElement("section");// create alert container
+  alert_div.classList.add("cart_alert_div")  // adding class
+  let alert_box = document.querySelectorAll(".cart_alert_div");
+  // console.log(alert_box.length);
+  alert_div.style.opacity = "0";
+  alert_div.style.transform = `translateY(-${alert_box.length * 50}%)`;
+  // alert_div.style.transform = `scale(0)`;
+  alert_div.style.marginTop = "20px";
+  alert_div.innerHTML = `<p> 
+    <span><img src="https://cdn-icons-png.flaticon.com/512/14090/14090371.png" height="20" width="20"></span> <span class="ml-2">${massage}</span></p>`
+  document.body.appendChild(alert_div);
+  setTimeout(() => {
+    alert_div.style.opacity = "1";
+    alert_div.style.transform = `translateY(-${alert_box.length * 150}%)`;
+  }, 100);
+  setTimeout(() => {
+    alert_div.style.transform = `translateY(-${alert_box.length * 100}%)`;
+    alert_div.style.opacity = "0";
+  }, 4799);
+
+  setTimeout(() => {
+    // alert_div.style.transform = `translateY(-${alert_box.length*100}%)`;
+    alert_div.remove();
+  }, 5000);
+}
+// ================================= add to cart alert ==============================================================
