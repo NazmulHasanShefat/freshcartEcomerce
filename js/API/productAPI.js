@@ -93,9 +93,10 @@ function handle_products(Product_elem) {
     })
   })
 }
+// store cart products in cart variable
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// rander product
+// rander cart product
 function rander_cart_product() {
   let cart_product_container = document.querySelector(".wrap_cart_products");
 
@@ -164,7 +165,7 @@ function rander_cart_product() {
 }
 
 
-// add to cart
+// add to cart functionality
 function product_add_to_cart(pro_id, this_btn) {
   let cart_product_title = this_btn.parentElement.parentElement.children[1].innerText;
   let cart_product_image = this_btn.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.src;
@@ -203,14 +204,20 @@ function delete_cart_item(event){
   update_product();
 }
 
+// cart notification
 function update_notification(){
-    let cart_item_quantity = cart.length
-    
+  let cart_badge_text = document.querySelector(".cart_badge_text");  
+  let cart_item_quantity = cart.length
+  cart_badge_text.innerText = cart_item_quantity;
 }
 
+
+
+// update all
 function update_product(){
   rander_cart_product();
   updateLocal();
+  update_notification();
 }
 function updateLocal() {
   localStorage.setItem("cart", JSON.stringify(cart))
