@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Shopping Cart</title>
+    <!-- Use Tailwind CSS for a modern, responsive design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .product-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .add-to-cart-btn, .remove-from-cart-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .add-to-cart-btn:hover {
+            transform: scale(1.05);
+        }
+        .remove-from-cart-btn:hover {
+            background-color: #dc2626; /* Red-600 */
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <!-- Header -->
+    <header class="text-center mb-10">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-2">My Awesome Store</h1>
+        <p class="text-lg text-gray-600">Explore our amazing products!</p>
+    </header>
+
+    <main class="grid lg:grid-cols-3 gap-8">
+
+        <!-- Product List Section -->
+        <section id="product-list" class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-xl">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Products</h2>
+            <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product cards will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Shopping Cart Section -->
+        <section id="shopping-cart" class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-xl">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center justify-between">
+                <span>Your Cart</span>
+                <span id="cart-item-count" class="text-sm font-medium text-gray-500">0 items</span>
+            </h2>
+            <ul id="cart-items" class="divide-y divide-gray-200">
+                <!-- Cart items will be dynamically inserted here by JavaScript -->
+            </ul>
+
+            <div class="mt-8 pt-4 border-t-2 border-dashed border-gray-200">
+                <div class="flex justify-between items-center text-xl font-semibold text-gray-800">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button id="checkout-btn" class="mt-4 w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition-colors">
+                    Checkout
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Use a function to ensure all code runs after the DOM is fully loaded.
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- DATA ---
+            // A list of products with their details.
+            const products = [
+                { id: 1, name: 'Wireless Headphones', price: 99.99, image: 'https://placehold.co/400x300/e2e8f0/64748b?text=Headphones' },
+                { id: 2, name: 'Mechanical Keyboard', price: 129.50, image: 'https://placehold.co/400x300/e2e8f0/64748b?text=Keyboard' },
+                { id: 3, name: 'Gaming Mouse', price: 59.99, image: 'https://placehold.co/400x300/e2e8f0/64748b?text=Mouse' },
+                { id: 4, name: 'LED Monitor 27"', price: 249.00, image: 'https://placehold.co/400x300/e2e8f0/64748b?text=Monitor' },
+                { id: 5, name: 'Webcam 1080p', price: 75.00, image: 'https://placehold.co/400x300/e2e8f0/64748b?text=Webcam' },
+                { id: 6, name: 'USB-C Hub', price: 34.95, image: 'https://placehold.co/400x300/e2e8f0/64748b?text=USB+Hub' },
+            ];
+
+            // Initialize the shopping cart from localStorage or as an empty array.
+            let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+            // --- DOM ELEMENTS ---
+            const productsContainer = document.getElementById('products-container');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            const cartItemCountElement = document.getElementById('cart-item-count');
+
+            // --- FUNCTIONS ---
+
+            // Renders all product cards on the page.
+            function renderProducts() {
+                productsContainer.innerHTML = ''; // Clear previous content
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card bg-gray-100 rounded-xl p-4 shadow-md flex flex-col items-center text-center';
+                    
+                    productCard.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}" class="rounded-lg mb-4 w-full h-auto object-cover">
+                        <h3 class="font-semibold text-lg text-gray-900">${product.name}</h3>
+                        <p class="text-gray-600 mt-1">$${product.price.toFixed(2)}</p>
+                        <button data-id="${product.id}" class="add-to-cart-btn mt-4 w-full bg-blue-500 text-white font-medium py-2 rounded-lg hover:bg-blue-600">
+                            Add to Cart
+                        </button>
+                    `;
+                    productsContainer.appendChild(productCard);
+                });
+                // Attach event listeners to the "Add to Cart" buttons after they are created.
+                document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                    button.addEventListener('click', addToCart);
+                });
+            }
+
+            // Adds a product to the cart.
+            function addToCart(event) {
+                const productId = parseInt(event.target.dataset.id);
+                const productToAdd = products.find(p => p.id === productId);
+
+                // Check if the product is already in the cart.
+                const existingItem = cart.find(item => item.id === productId);
+
+                if (existingItem) {
+                    // If it exists, just increase the quantity.
+                    existingItem.quantity += 1;
+                } else {
+                    // If it's a new item, add it to the cart with a quantity of 1.
+                    cart.push({ ...productToAdd, quantity: 1 });
+                }
+
+                updateCart();
+            }
+
+            // Renders the cart items, updates the total, and saves to localStorage.
+            function updateCart() {
+                renderCartItems();
+                calculateTotal();
+                saveCartToLocalStorage();
+            }
+
+            // Renders the list of items currently in the cart.
+            function renderCartItems() {
+                cartItemsContainer.innerHTML = ''; // Clear the list
+                let itemCount = 0;
+                cart.forEach(item => {
+                    const cartItem = document.createElement('li');
+                    cartItem.className = 'flex justify-between items-center py-4';
+                    cartItem.innerHTML = `
+                        <div>
+                            <span class="font-medium text-gray-900">${item.name}</span>
+                            <span class="text-sm text-gray-500 block">Quantity: ${item.quantity}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-semibold text-gray-800">$${(item.price * item.quantity).toFixed(2)}</span>
+                            <button data-id="${item.id}" class="remove-from-cart-btn ml-4 bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-lg leading-none">
+                                &times;
+                            </button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                    itemCount += item.quantity;
+                });
+                cartItemCountElement.textContent = `${itemCount} item${itemCount !== 1 ? 's' : ''}`;
+                
+                // Add event listeners to the new "Remove" buttons.
+                document.querySelectorAll('.remove-from-cart-btn').forEach(button => {
+                    button.addEventListener('click', removeFromCart);
+                });
+            }
+
+            // Removes an item from the cart.
+            function removeFromCart(event) {
+                const productId = parseInt(event.target.dataset.id);
+                // Find the index of the item to remove.
+                const itemIndex = cart.findIndex(item => item.id === productId);
+                
+                if (itemIndex > -1) {
+                    const itemToRemove = cart[itemIndex];
+                    if (itemToRemove.quantity > 1) {
+                        // If quantity is more than 1, just decrease the quantity.
+                        itemToRemove.quantity -= 1;
+                    } else {
+                        // If quantity is 1, remove the item from the array.
+                        cart.splice(itemIndex, 1);
+                    }
+                }
+                updateCart();
+            }
+
+            // Calculates and displays the total price of all items in the cart.
+            function calculateTotal() {
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotalElement.textContent = `$${total.toFixed(2)}`;
+            }
+            
+            // Saves the current cart state to localStorage.
+            function saveCartToLocalStorage() {
+                localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            }
+
+            // --- INITIALIZATION ---
+            // Render the products and the cart when the page first loads.
+            renderProducts();
+            updateCart();
+        });
+    </script>
+</body>
+</html>

@@ -111,7 +111,7 @@ function rander_cart_product() {
         <div class="d-none">${cartItem.p_id}</div>
         <div class="cart-name" style="font-size: 16px;"><strong>${cartItem.p_title}</strong></div>
         <div class="cart_remove_btn_container">
-        <a href="#" class="remove_btn" data-target="${cartItem.p_id}" style="font-size: 12px;">
+        <a href="#" class="remove_btn" data-myId="${cartItem.p_id}" style="font-size: 12px;">
         <span>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px"
         height="18px" viewBox="0 0 24 24" version="1.1">
@@ -158,11 +158,7 @@ function rander_cart_product() {
   // ================================ remove cartItem  =======================================
   let remove_btn = document.querySelectorAll(".remove_btn");
   remove_btn.forEach(cart_rm_btn => {
-    cart_rm_btn.addEventListener("click", () => {
-      let currentBtn_id = cart_rm_btn;
-      let dataTarget = cart_rm_btn.getAttribute("data-target");
-      delete_cart_item(currentBtn_id,dataTarget);
-    })
+    cart_rm_btn.addEventListener("click", delete_cart_item)
   })
   // ========================================================================================
 }
@@ -190,21 +186,22 @@ function product_add_to_cart(pro_id, this_btn) {
     alertAdded_to_cart("Added to cart");
     // rander_cart_product();
   }
-  rander_cart_product();
+  update_product();
 }
-rander_cart_product();
+update_product();
 
 // ================================ remove cartItem  =======================================
-function delete_cart_item(elem, dt){
-  let cart_product_id = elem.parentElement.parentElement.firstElementChild.innerText;
-  if(cart_product_id){
-     cart.splice(cart_product_id,1);
-    updateLocal();
-  }
+function delete_cart_item(event){
+  const cart_product_id = parseInt(event.target.getAttribute("data-myId"));
+  const ItemIndex = cart.findIndex(item => item.p_id === cart_product_id);
+  console.log(ItemIndex);
 }
-rander_cart_product();
 
-// rander_cart_product();
+
+function update_product(){
+  rander_cart_product();
+  updateLocal();
+}
 function updateLocal() {
   localStorage.setItem("cart", JSON.stringify(cart))
 }
