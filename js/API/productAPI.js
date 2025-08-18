@@ -140,9 +140,9 @@ function rander_cart_product() {
         
         <div class="cart-sections col-6 col-lg-3 px-5 py-2">
         <div class="cart-quantity d-flex align-items-center justify-content-start">
-        <button type="button">+</button>
+        <button type="button" class="btn_plus">+</button>
         <div>${cartItem.p_Quantity}</div>
-        <button type="button">-</button>
+        <button type="button" class="btn_minus">-</button>
         </div>
         </div>
         
@@ -161,7 +161,15 @@ function rander_cart_product() {
   remove_btn.forEach(cart_rm_btn => {
     cart_rm_btn.addEventListener("click", delete_cart_item)
   })
-  // ========================================================================================
+  // ============================ increase and decrease buttons =========================
+  let increase_btn = document.querySelectorAll(".btn_plus");
+  increase_btn.forEach(inc_btn =>{
+    inc_btn.addEventListener("click",increase_quantity);
+  })
+  let decrease_btn = document.querySelectorAll(".btn_minus");
+  decrease_btn.forEach(dec_btn =>{
+    dec_btn.addEventListener("click",decrease_quantity);
+  })
 }
 
 
@@ -202,6 +210,16 @@ function delete_cart_item(event){
     update_product();
   }
   update_product();
+}
+// increase cart item quantity
+function increase_quantity(elem){
+  const inc_value = parseInt(elem.target.parentElement.children[1].innerText);
+  
+  console.log(inc_value);
+}
+function decrease_quantity(elem){
+  const dec_value = parseInt(elem.target.parentElement.children[1].innerText);
+  console.log(dec_value);
 }
 
 // cart notification
