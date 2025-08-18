@@ -194,9 +194,19 @@ update_product();
 function delete_cart_item(event){
   const cart_product_id = parseInt(event.target.getAttribute("data-myId"));
   const ItemIndex = cart.findIndex(item => item.p_id === cart_product_id);
-  console.log(ItemIndex);
+  if(ItemIndex > -1){
+    // const Item_to_remove = cart[ItemIndex];
+    // console.log(Item_to_remove);
+    cart.splice(ItemIndex,1);
+    update_product();
+  }
+  update_product();
 }
 
+function update_notification(){
+    let cart_item_quantity = cart.length
+    
+}
 
 function update_product(){
   rander_cart_product();
