@@ -141,7 +141,7 @@ function rander_cart_product() {
         <div class="cart-sections col-6 col-lg-3 px-5 py-2">
         <div class="cart-quantity d-flex align-items-center justify-content-start">
         <button type="button" class="btn_plus">+</button>
-        <div>${cartItem.p_Quantity}</div>
+        <div class="inc_dec_value">${cartItem.p_Quantity}</div>
         <button type="button" class="btn_minus">-</button>
         </div>
         </div>
@@ -163,13 +163,9 @@ function rander_cart_product() {
   })
   // ============================ increase and decrease buttons =========================
   let increase_btn = document.querySelectorAll(".btn_plus");
-  increase_btn.forEach(inc_btn =>{
-    inc_btn.addEventListener("click",increase_quantity);
-  })
+  increase_quantity(increase_btn);
   let decrease_btn = document.querySelectorAll(".btn_minus");
-  decrease_btn.forEach(dec_btn =>{
-    dec_btn.addEventListener("click",decrease_quantity);
-  })
+  decrease_quantity(decrease_btn);
 }
 
 
@@ -212,15 +208,32 @@ function delete_cart_item(event){
   update_product();
 }
 // increase cart item quantity
+
 function increase_quantity(elem){
-  const inc_value = parseInt(elem.target.parentElement.children[1].innerText);
-  
-  console.log(inc_value);
+  elem.forEach(elem_btn =>{
+    let inc_value = parseInt(elem_btn.parentElement.children[1].textContent);
+    let inc_value_container = elem_btn.parentElement.children[1];
+    elem_btn.addEventListener("click",()=>{
+      inc_value++
+      // inc_value_container.innerText = inc_value;
+      // update_product();
+    })
+  })
 }
-function decrease_quantity(elem){
-  const dec_value = parseInt(elem.target.parentElement.children[1].innerText);
-  console.log(dec_value);
+
+// let current_inc_dec_value;
+function decrease_quantity(elem_dec){
+  elem_dec.forEach(elem_dec_btn =>{
+    let dec_value = elem_dec_btn.parentElement.children[1].innerText;
+    let dec_value_container = elem_dec_btn.parentElement.children[1];
+    elem_dec_btn.addEventListener("click",()=>{
+      // dec_value--;
+      // dec_value_container.innerText = dec_value;
+      console.log(dec_value);
+    })
+  })
 }
+
 
 // cart notification
 function update_notification(){
