@@ -23,9 +23,11 @@ function get_product() {
         return `
          <div class="product_wraper col-12 col-lg-3">
                 <div class="product px-3 py-2" style="width: 97%;">
-                  <div class="product-image d-flex justify-content-center align-items-center">
-                    <img src="${product.images}" height="150" id="product_img" width="150" alt="">
+                 
+                <div class="product-image d-flex justify-content-center align-items-center">
+                   <a href="./pages/product_page/productpage.html?name=${product.title}"><img src="${product.images}" height="150" id="product_img" width="150" alt=""></a>
                   </div>
+                  
                   
                   <div class="product_all_details">
                   <div class="d-none">${product.id}</div>
