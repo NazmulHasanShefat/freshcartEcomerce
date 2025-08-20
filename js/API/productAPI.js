@@ -251,8 +251,6 @@ function update_notification(){
   cart_badge_text.innerText = cart_item_quantity;
 }
 
-
-
 // update all
 function update_product(){
   rander_cart_product();
