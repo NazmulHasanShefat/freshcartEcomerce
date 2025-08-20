@@ -147,7 +147,7 @@ function rander_cart_product() {
         </div>
         
         <div class="cart-sections col-6 col-lg-2 d-lg-block py-2 d-flex px-3 justify-content-end">
-        <div class="total-amount"><strong>$${cartItem.p_price}</strong></div>
+        <div class="total-amount"><strong>$${cartItem.p_total}</strong></div>
         </div>
         
         </div>  
@@ -187,6 +187,7 @@ function product_add_to_cart(pro_id, this_btn) {
       p_price: cart_product_price,
       p_Quantity: 1,
       p_id: cart.length,
+      p_total: cart_product_price,
     })
     alertAdded_to_cart("Added to cart");
     // rander_cart_product();
@@ -210,7 +211,7 @@ function delete_cart_item(event){
 // increase cart item quantity
 function increase_quantity(elem){
   elem.forEach(elem_btn =>{
-    // let inc_value = parseInt(elem_btn.parentElement.children[1].textContent);
+    // let inc_total_elem = elem_btn.parentElement.parentElement.parentElement.lastElementChild.firstElementChild.firstElementChild;
     let inc_id = parseInt(elem_btn.parentElement.parentElement.parentElement.children[1].firstElementChild.innerText);
     elem_btn.addEventListener("click",()=>{
       const inc_product_id = cart.find(inc_item => inc_item.p_id === inc_id)
@@ -219,7 +220,7 @@ function increase_quantity(elem){
         inc_product_id.p_Quantity++;
         let x = inc_product_id.p_Quantity;
         update_product();
-        calculate_total(inc_product_id.p_Quantity,inc_product_id.p_price);
+        calculate_total(inc_product_id.p_Quantity,inc_product_id.p_price,inc_id);
       }
       update_product();
     })
@@ -235,16 +236,21 @@ function decrease_quantity(elem_dec){
       if(dec_product_id){
          if(dec_product_id.p_Quantity > 1){
             dec_product_id.p_Quantity--;
-         }
+            calculate_total(dec_product_id.p_Quantity,dec_product_id.p_price,dec_id);
+          }
         }
         update_product();
     })
   })
 }
 
-function calculate_total(cal_Q,cal_price){
+function calculate_total(cal_Q,cal_price,cal_product_id){
+  // single total ============================================================
   let single_total = parseFloat(cal_price) * parseInt(cal_Q);
-  console.log(single_total);
+  const single_total_item = cart.find(item => item.p_price === cal_price);
+  if(single_total_item){
+    single_total_item.p_total = single_total;
+  }
 }
 
 // cart notification
