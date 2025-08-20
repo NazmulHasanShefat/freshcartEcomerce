@@ -217,7 +217,9 @@ function increase_quantity(elem){
       if(inc_product_id){
         console.log(inc_id);
         inc_product_id.p_Quantity++;
+        let x = inc_product_id.p_Quantity;
         update_product();
+        calculate_total(inc_product_id.p_Quantity,inc_product_id.p_price);
       }
       update_product();
     })
@@ -240,8 +242,9 @@ function decrease_quantity(elem_dec){
   })
 }
 
-function calculate_total(){
-  
+function calculate_total(cal_Q,cal_price){
+  let single_total = parseFloat(cal_price) * parseInt(cal_Q);
+  console.log(single_total);
 }
 
 // cart notification
