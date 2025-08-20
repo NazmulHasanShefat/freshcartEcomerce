@@ -216,13 +216,10 @@ function increase_quantity(elem){
     elem_btn.addEventListener("click",()=>{
       const inc_product_id = cart.find(inc_item => inc_item.p_id === inc_id)
       if(inc_product_id){
-        console.log(inc_id);
         inc_product_id.p_Quantity++;
         let x = inc_product_id.p_Quantity;
         calculate_total(inc_product_id.p_Quantity,inc_product_id.p_price)
-        update_product();
       }
-      subTotal();
       update_product();
     })
   })
@@ -239,7 +236,6 @@ function decrease_quantity(elem_dec){
             dec_product_id.p_Quantity--;
           }
           calculate_total(dec_product_id.p_Quantity,dec_product_id.p_price);
-          subTotal();
         }
         update_product();
     })
@@ -256,8 +252,11 @@ function calculate_total(cal_Q,cal_price,cal_product_id){
 }
 // sub total calculation
 function subTotal(){
-  let x = cart.reduce((sum, item) => sum + eval(item.p_total),0);
-  console.log(x.toFixed(2));
+  let cart_subtotal = document.querySelector(".cart_subtotalText");
+  let cart_sub_total = cart.reduce((sum, item) => sum + eval(item.p_total),0);
+  let c_s_t = cart_sub_total.toFixed(2);
+  cart_subtotal.innerText = c_s_t;
+
 }
 
 
@@ -274,6 +273,7 @@ function update_product(){
   rander_cart_product();
   updateLocal();
   update_notification();
+  subTotal();
 }
 function updateLocal() {
   localStorage.setItem("cart", JSON.stringify(cart))

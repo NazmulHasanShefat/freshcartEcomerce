@@ -18,4 +18,4 @@ function myFunc(accumulator, nextElement) {
 // next itaretion
 // 775 + 32 = 807
 // এভাবে চলতেই থাকবে যতক্ষন না array শেষ হবে । ................
-console.log(9.99 + 19.99 + 14.99);
+console.log(29.97 + 44.97);
