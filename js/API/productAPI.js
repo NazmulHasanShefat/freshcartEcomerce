@@ -219,9 +219,10 @@ function increase_quantity(elem){
         console.log(inc_id);
         inc_product_id.p_Quantity++;
         let x = inc_product_id.p_Quantity;
+        calculate_total(inc_product_id.p_Quantity,inc_product_id.p_price)
         update_product();
-        calculate_total(inc_product_id.p_Quantity,inc_product_id.p_price,inc_id);
       }
+      subTotal();
       update_product();
     })
   })
@@ -236,22 +237,29 @@ function decrease_quantity(elem_dec){
       if(dec_product_id){
          if(dec_product_id.p_Quantity > 1){
             dec_product_id.p_Quantity--;
-            calculate_total(dec_product_id.p_Quantity,dec_product_id.p_price,dec_id);
           }
+          calculate_total(dec_product_id.p_Quantity,dec_product_id.p_price);
+          subTotal();
         }
         update_product();
     })
   })
 }
 
+// single total ============================================================
 function calculate_total(cal_Q,cal_price,cal_product_id){
-  // single total ============================================================
   let single_total = parseFloat(cal_price) * parseInt(cal_Q);
   const single_total_item = cart.find(item => item.p_price === cal_price);
   if(single_total_item){
-    single_total_item.p_total = single_total;
+    single_total_item.p_total = single_total.toFixed(2);
   }
 }
+// sub total calculation
+function subTotal(){
+  let x = cart.reduce((sum, item) => sum + eval(item.p_total),0);
+  console.log(x.toFixed(2));
+}
+
 
 // cart notification
 function update_notification(){
@@ -259,6 +267,7 @@ function update_notification(){
   let cart_item_quantity = cart.length
   cart_badge_text.innerText = cart_item_quantity;
 }
+
 
 // update all
 function update_product(){
