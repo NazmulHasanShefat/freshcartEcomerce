@@ -140,9 +140,9 @@ function rander_cart_product() {
         
         <div class="cart-sections col-6 col-lg-3 px-5 py-2">
         <div class="cart-quantity d-flex align-items-center justify-content-start">
-        <button type="button" class="btn_plus">+</button>
-        <div class="inc_dec_value">${cartItem.p_Quantity}</div>
         <button type="button" class="btn_minus">-</button>
+        <div class="inc_dec_value">${cartItem.p_Quantity}</div>
+        <button type="button" class="btn_plus">+</button>
         </div>
         </div>
         
@@ -208,7 +208,6 @@ function delete_cart_item(event){
   update_product();
 }
 // increase cart item quantity
-
 function increase_quantity(elem){
   elem.forEach(elem_btn =>{
     // let inc_value = parseInt(elem_btn.parentElement.children[1].textContent);
@@ -241,6 +240,9 @@ function decrease_quantity(elem_dec){
   })
 }
 
+function calculate_total(){
+  
+}
 
 // cart notification
 function update_notification(){

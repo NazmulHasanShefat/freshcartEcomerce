@@ -472,26 +472,21 @@ body {
     left: 0;
     height: max-content;
 }
-.checkout_btn{
-    border: none;
-    margin: 4px 0;
-    outline: none;
-    width: 50%;
-    padding: 10px 15px;
-    background-color: var(--btn-bg);
-    color: #fff;
-    font-size: 1.1rem;
-    border-radius: 18px;
-}
-.Vew_cart{
-    border: none;
-    margin: 4px 0;
-    outline: none;
-    width: 50%;
-    padding: 10px 15px;
-    background-color: var(--btn-bg);
-    color: #fff;
-    font-size: 1.1rem;
-    border-radius: 18px;
-
+.c_links{
+    .vew_cart,.checkout{
+        width: max-content;
+        display: block;
+        background-color: var(--btn-bg);
+        text-decoration: none;
+        padding: 5px 16px;
+        color: var(--white-text);
+        border-radius: 8px;
+        transition: all .2s ease-in-out;
+        &:hover{
+            background-color: var(--btn-hover-active-bg);
+        }
+    }
+    .checkout{
+        background-color: black;
+    }
 }

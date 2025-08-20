@@ -441,8 +441,8 @@
     aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header pb-1">
       <div class="offcanvas-title" id="offcanvasExampleLabel">
-        <h5>Shoping cart</h5>
-        <p>location: 23234</p>
+        <h5 class="mb-1">Shoping cart</h5>
+        <p class="mb-1" style="font-size: .8rem;">location: 23234</p>
       </div>
       <button type="button" class="btn-close mb-3 me-1" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
@@ -453,13 +453,19 @@
               now!</strong></a>
         </div>
       </div>
-      <div class="wrap_cart_products" style="height: 85%; overflow-x: hidden; overflow-y: auto;">
+      <div class="wrap_cart_products">
         </div>
       </div>
 
-      <div class="checkout-options d-flex justify-content-between gap-3">
-        <button class="Vew_cart" type="button">Vew cart page</button>
-        <button class="checkout_btn" type="button">Checkout</button>
+      <div class="checkout-options">
+        <div class="cart_subtotal mb-1 d-flex justify-content-between px-2 align-items-center fw-bolder">
+           <p class="mb-1">Subtotal</p>
+          <div><span>$</span><span>305</span></div>
+        </div>
+        <div class="c_links d-flex justify-content-between gap-lg-5 gap-3">
+          <a href="#" class="vew_cart">Vew cart</a>
+          <a href="#" class="checkout">Checkout</a>
+        </div>
       </div>
 
     </div>
