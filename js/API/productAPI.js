@@ -211,12 +211,16 @@ function delete_cart_item(event){
 
 function increase_quantity(elem){
   elem.forEach(elem_btn =>{
-    let inc_value = parseInt(elem_btn.parentElement.children[1].textContent);
-    let inc_value_container = elem_btn.parentElement.children[1];
+    // let inc_value = parseInt(elem_btn.parentElement.children[1].textContent);
+    let inc_id = parseInt(elem_btn.parentElement.parentElement.parentElement.children[1].firstElementChild.innerText);
     elem_btn.addEventListener("click",()=>{
-      inc_value++
-      // inc_value_container.innerText = inc_value;
-      // update_product();
+      const inc_product_id = cart.find(inc_item => inc_item.p_id === inc_id)
+      if(inc_product_id){
+        console.log(inc_id);
+        inc_product_id.p_Quantity++;
+        update_product();
+      }
+      update_product();
     })
   })
 }
@@ -224,12 +228,15 @@ function increase_quantity(elem){
 // let current_inc_dec_value;
 function decrease_quantity(elem_dec){
   elem_dec.forEach(elem_dec_btn =>{
-    let dec_value = elem_dec_btn.parentElement.children[1].innerText;
-    let dec_value_container = elem_dec_btn.parentElement.children[1];
+    let dec_id = parseInt(elem_dec_btn.parentElement.parentElement.parentElement.children[1].firstElementChild.innerText);
     elem_dec_btn.addEventListener("click",()=>{
-      // dec_value--;
-      // dec_value_container.innerText = dec_value;
-      console.log(dec_value);
+      const dec_product_id = cart.find(dec_item => dec_item.p_id === dec_id);
+      if(dec_product_id){
+         if(dec_product_id.p_Quantity > 1){
+            dec_product_id.p_Quantity--;
+         }
+        }
+        update_product();
     })
   })
 }
