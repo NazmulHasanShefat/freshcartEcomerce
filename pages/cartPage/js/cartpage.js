@@ -13,15 +13,25 @@ function getCartItem(){
                     Content for list item
                 </div>
                 <div class="quantity_controls d-flex justify-content-center align-items-center mx-4">
-                    <button class="btn btn-sm fs-3">-</button>
-                    <div>${item.p_Quantity}</div>
-                    <button class="btn btn-sm fs-3">+</button>
+                    <button class="btn btn-sm mx-2">-</button>
+                    <div style="border: 1px solid #7c7c7c60" class="px-2">${item.p_Quantity}</div>
+                    <button  class="btn btn-sm mx-2">+</button>
                 </div>
-            <a href="../product_page/productpage.html?name=${item.p_title}" class="btn btn-secondary">Vew_product</a>
+                <div class="mx-3"><strong>$<span>${item.p_total}</span></strong></div>
+             <a href="../product_page/productpage.html?name=${item.p_title}" class="btn btn-success btn-sm" style="font-size: .6rem">
+                Vew product
+             </a>
             </li>
             
         `;
         cart_product_list.appendChild(list_container);
+        let sub_total = document.getElementById("sub_total");
+        let total = shoping_cart.reduce((sum,item)=> sum + eval(item.p_total),0);
+        sub_total.innerText = total;
+        const dec_total = document.getElementById("dec_total");
+        let totalParsentage = 5;
+        let dec_t = total * totalParsentage / 100;
+        dec_total.innerText = dec_t.toFixed(2);
     })
 }
 getCartItem()

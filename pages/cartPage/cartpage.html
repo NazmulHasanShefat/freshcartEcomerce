@@ -61,31 +61,41 @@
         </div>
     </nav>
 
+    <div class="alert alert-success d-flex justify-content-between px-5 py-2" role="alert">
+        <p class="mb-0">promo code for you thank you for shoping</p>
+        <strong class="mb-0 text-danger">NT70PRO</strong>
+    </div>
     <main class="d-flex justify-content-center align-items-center mt-5" style="width: 100%;">
         <div class="container d-flex gap-3">
             <div class="w-75 cart_product_list"></div>
             <div class="w-25 p-0">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title d-flex justify-content-between"><span>Sub total:</span><span><span>$</span><span>0</span></span>
+                        <h5 class="card-title d-flex justify-content-between"><span>Sub
+                                total:</span><span><span>$</span><span id="sub_total">0</span></span>
                         </h5>
-                        <p class="card-title d-flex justify-content-between"><span>descount:</span><span><span>$</span>5</span></p>
-                        
+                        <p class="card-title d-flex justify-content-between"><span
+                                class="text-success">descount:</span><span class="text-success"><span>5</span>%</span>
+                        </p>
+
                         <p class="card-title d-flex justify-content-between"><span>Cupons:</span><span>0</span></p>
-                        
-                        <a class="link-success" data-bs-toggle="collapse" href="#cupons_container"
-                            role="button" aria-expanded="false" aria-controls="collapseExample">
-                            I have a cupon
+                        <strong class="card-title d-flex justify-content-between text-body-secondary"><span>descount
+                                Amount:</span><span>$<span id="dec_total">0</span></span></strong>
+
+                        <a class="link-success" data-bs-toggle="collapse" href="#cupons_container" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            I have a cupon code
                         </a>
                         <div class="collapse" id="cupons_container">
                             <div class="card-title d-flex justify-content-between align-items-center my-3">
-                                <input type="text" name="cupon" class="form-control" placeholder="Enter your cupon code" id="">
+                                <input type="text" name="cupon" class="form-control" placeholder="Enter your cupon code"
+                                    id="">
                             </div>
-                            <p class="card-title d-flex justify-content-between align-items-center"><button
-                                    type="button" class="btn btn-success btn-sm">Apply cupon</button></p>
+                            <div class="card-title w-100 d-flex justify-content-between align-items-center"><button
+                                    type="button" class="btn w-100 btn-success btn-sm">Apply cupon</button></div>
                         </div>
                         <div class="mt-3 w-100">
-                            <a href="#" class="w-100 btn btn-danger btn-sm">Checkout now</a>
+                            <a href="#" class="w-100 btn btn-danger btn-sm">Prosease to Checkout</a>
                         </div>
                     </div>
                 </div>
