@@ -1,6 +1,6 @@
 .cart_alert_div {
     position: fixed;
-    bottom: 50px;
+    bottom: 20px;
     // background-color: aqua;
     right: 30px;
     background-color: #fff;
@@ -62,5 +62,9 @@
         height: 68%;
         overflow-x: hidden;
         overflow-y: auto;
+    }
+    .cart_alert_div {
+        bottom: 70px;
+        right: 8px;
     }
 }

@@ -289,18 +289,18 @@ function alertAdded_to_cart(massage) {
   let alert_box = document.querySelectorAll(".cart_alert_div");
   // console.log(alert_box.length);
   alert_div.style.opacity = "0";
-  alert_div.style.transform = `translateY(-${alert_box.length * 50}%)`;
+  alert_div.style.transform = `translateY(-${alert_box.length * 0}%) scale(0)`;
   // alert_div.style.transform = `scale(0)`;
-  alert_div.style.marginTop = "20px";
+  alert_div.style.marginTop = "10px";
   alert_div.innerHTML = `<p> 
     <span><img src="https://cdn-icons-png.flaticon.com/512/14090/14090371.png" height="20" width="20"></span> <span class="ml-2">${massage}</span></p>`
   document.body.appendChild(alert_div);
   setTimeout(() => {
     alert_div.style.opacity = "1";
-    alert_div.style.transform = `translateY(-${alert_box.length * 150}%)`;
+    alert_div.style.transform = `translateY(-${alert_box.length * 130}%) scale(1)`;
   }, 100);
   setTimeout(() => {
-    alert_div.style.transform = `translateY(-${alert_box.length * 100}%)`;
+    alert_div.style.transform = `translateY(-${alert_box.length * 100}%) scale(0)`;
     alert_div.style.opacity = "0";
   }, 4799);
 
