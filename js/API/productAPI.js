@@ -12,7 +12,7 @@ async function send_request() {
     return error;
   }
 }
-
+  
 let product_container = document.querySelector(".allproduct-container");
 function get_product() {
   send_request()

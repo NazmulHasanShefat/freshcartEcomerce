@@ -18,7 +18,7 @@ function getCartItem() {
                         <div style="border: 1px solid #7c7c7c60" class="px-2">${item.p_Quantity}</div>
                         <button  class="btn btn-sm mx-2 inc_button" inc-Id=${item.p_id}>+</button>
                     </div>
-                    <div class="mx-3"><strong>$<span>${item.p_total}</span></strong></div>
+                    <div class="mx-3"><strong>$<span>${item.p_total.toFixed(2)}</span></strong></div>
                  <a href="../product_page/productpage.html?name=${item.p_title}" class="btn btn-success btn-sm" style="font-size: .6rem">
                     Vew product
                  </a>
@@ -37,8 +37,7 @@ function getCartItem() {
             delete_btn.addEventListener("click", delete_cartItem);
         })
         let inc_button = document.querySelectorAll(".inc_button").forEach(inc_btn => inc_btn.addEventListener("click", cart_inc_quantity));
-        let dec_button = document.querySelectorAll(".dec_button").forEach(dec_btn => dec_btn.addEventListener("click", cart_dec_quantity))
-
+        let dec_button = document.querySelectorAll(".dec_button").forEach(dec_btn => dec_btn.addEventListener("click", cart_dec_quantity));
     })
 }
 getCartItem();
@@ -49,6 +48,7 @@ function delete_cartItem(e) {
 
     if (delete_cartItem > -1) {
         shoping_cart.splice(delete_cartItem, 1);
+        calculate_single_total(delete_cartItem.p_price, delete_cartItem.p_Quantity)
         updateAll();
     }
 }
@@ -57,8 +57,11 @@ function cart_inc_quantity(e) {
     console.log(inc_id)
     const inc_Item = shoping_cart.find(item => item.p_id === inc_id);
     if (inc_Item) {
-        inc_Item.p_Quantity++;
-        updateAll();
+        if(inc_Item.p_Quantity < 10){
+            inc_Item.p_Quantity++;
+            calculate_single_total(inc_Item.p_price, inc_Item.p_Quantity)
+            updateAll();
+        }
     }
 }
 function cart_dec_quantity(e) {
@@ -66,15 +69,17 @@ function cart_dec_quantity(e) {
     console.log(dec_id);
     const dec_Item = shoping_cart.find(item => item.p_id === dec_id);
     if (dec_Item) {
-        dec_Item.p_Quantity--;
-        updateAll();
+        if(dec_Item.p_Quantity > 1){
+            dec_Item.p_Quantity--;
+            calculate_single_total(dec_Item.p_price, dec_Item.p_Quantity)
+            updateAll();
+        }
     }
 }
 function calculateAll() {
     let sub_total = document.getElementById("sub_total");
     const dec_total = document.getElementById("dec_total");
     let cart_total = document.querySelector("#cart_total");
-
     let Subtotal = shoping_cart.reduce((sum, item) => sum + eval(item.p_total), 0).toFixed(2);
     let dec_t;
     let totalParsentage = 5;
@@ -83,9 +88,17 @@ function calculateAll() {
     cart_total.innerText = Subtotal;
     with_deccount_subtotal = Subtotal -= dec_t;
     sub_total.innerText = with_deccount_subtotal.toFixed(2);
-    // updateAll();
 }
 
+function calculate_single_total(price,Quantity){
+    const singleTotla = parseFloat(price) * parseInt(Quantity);
+    const single_total_item = shoping_cart.find(item => item.p_price === price);
+    if(single_total_item){
+        single_total_item.p_total = singleTotla;
+    }
+}
+
+console.log(shoping_cart);
 function updateAll() {
     updateLS();
     getCartItem();
