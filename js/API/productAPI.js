@@ -174,21 +174,22 @@ function rander_cart_product() {
 // add to cart functionality
 function product_add_to_cart(pro_id, this_btn) {
   let cart_product_title = this_btn.parentElement.parentElement.children[1].innerText;
-  let cart_product_image = this_btn.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.src;
+  let cart_product_image = this_btn.parentElement.parentElement.parentElement.firstElementChild.firstElementChild.firstElementChild.src;
   let cart_product_price = this_btn.parentElement.parentElement.children[2].firstElementChild.lastElementChild.innerText;
   // console.log(cart_product_image);
   // same product is exist
   const productExist = cart.find(item => item.p_title === cart_product_title);
+  const c_id = cart.find(item => item.p_id === cart.length + 1);
   if (productExist) {
     productExist.p_Quantity++;
     alertAdded_to_cart("Product updated to cart!");
   } else {
     cart.push({
       p_title: cart_product_title,
-      p_image: cart_product_image,
+      p_image: cart_product_image ? cart_product_image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUrgu4a7W_OM8LmAuN7Prk8dzWXm7PVB_FmA&s",
       p_price: cart_product_price,
       p_Quantity: 1,
-      p_id: cart.length,
+      p_id: c_id ? c_id.p_id + 1 : cart.length + 1,
       p_total: cart_product_price,
     })
     alertAdded_to_cart("Added to cart");
@@ -287,7 +288,9 @@ function updateLocal() {
 // ================================= add to cart alert ==============================================================
 function alertAdded_to_cart(massage) {
   let alert_div = document.createElement("section");// create alert container
-  alert_div.classList.add("cart_alert_div")  // adding class
+  alert_div.classList.add("cart_alert_div");
+  alert_div.setAttribute("data-bs-toggle","offcanvas");
+  alert_div.setAttribute("href","#offcanvasShopingCart");
   let alert_box = document.querySelectorAll(".cart_alert_div");
   // console.log(alert_box.length);
   alert_div.style.opacity = "0";
@@ -295,7 +298,11 @@ function alertAdded_to_cart(massage) {
   // alert_div.style.transform = `scale(0)`;
   alert_div.style.marginTop = "10px";
   alert_div.innerHTML = `<p> 
-    <span><img src="https://cdn-icons-png.flaticon.com/512/14090/14090371.png" height="20" width="20"></span> <span class="ml-2">${massage}</span></p>`
+  <span><img src="https://cdn-icons-png.flaticon.com/512/14090/14090371.png" height="20" width="20"></span> <span class="ml-2">${massage}</span></p>
+  <button class="mb-2 mx-3" style="font-size:.9rem; border:none; ouline:none; color:#fff;padding:2px; border-radius:10px; background-color: #77bc3f;">vew cart</button>
+  
+  
+  `
   document.body.appendChild(alert_div);
   setTimeout(() => {
     alert_div.style.opacity = "1";
